@@ -1,34 +1,61 @@
 package main
 
-import (
-    "fmt"
-	//"math/rand"
-	//"time"
-    )
-
+import "fmt"
+/*func swap(x  ,y string) (string,string) {
+	return y,x
+}*/
+type Vertex struct
 func main() {
-/*
-	s1 := rand.NewSource(time.Now().UnixNano())
-    r1 := rand.New(s1)
+
+	fmt.Print("Enter number :")
+	var input float64
+	fmt.Scanf("%f", &input)
+	output := input * 2
+	fmt.Println(output)
 	
-	r2 :=r1.Intn(100)
-	fmt.Println("Random Number Is :",r2)
- 
-	var input int
-	fmt.Scanf("%d", &input)
-	count :=5
-	for i:=0;i<count;i++{
-		fmt.Print("Enter number :")
-		fmt.Scanf("%d", &input)
-		fmt.Println("number :",input)
-		if input >r2 {
-			fmt.Println("มากไป")
-		}else if input <r2{
-			fmt.Println("น้อยไป")
+	for number :=1;number <=100;number++ {
+		if number%15 ==0{
+			fmt.Println(number,"FizzBuzz")
+		} else if number%3==0{
+			fmt.Println(number,"Fizz")
+		} else if number%5==0{
+			fmt.Println(number,"Buzz")
 		}else{
-			fmt.Println("เจอแล้ว")
+			fmt.Println(number)
 		}
 	}
+     i :=5 */
+	
+
+   
+   /*switch i :=5;i {
+	case 0:
+		fmt.Println("Zero")
+	case 1:
+		fmt.Println("One")
+	default:
+	    fmt.Println("AAAA")
+
+	}
+	result :=true
+	if result ==1{
+		fmt.Println("AAAA")
+	}*/
+
+	
+		//fmt.Println(add(42,13))
+	//	a,b :=swap("hello","World")
+	//	fmt.Println(a,b)
+	/*
+	i,j :=42,2701
+	p :=&i
+	fmt.Println(*p)
+	*p =21
+	fmt.Println(i)
+	p =&j
+	*p =*p/37
+	fmt.Println(j)
 	*/
-    
+
+	
 }

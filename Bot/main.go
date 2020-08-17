@@ -33,12 +33,10 @@ func main() {
 		fmt.Println("Connect Fail")
 		panic(err)
 	}
-	fmt.Println("Database Connected.")
+	fmt.Println("Connected")
 	defer db.Close()
-
-	r := gin.Default()
-
-	r.POST("/register/email", register)
+        r := gin.Default()
+        r.POST("/register/email", register)
 	r.GET("/member", listMember)
 	r.Run()
 }

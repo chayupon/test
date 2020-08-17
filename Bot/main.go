@@ -33,16 +33,18 @@ func main() {
 		fmt.Println("Connect Fail")
 		panic(err)
 	}
-	fmt.Println("Connected")
+	fmt.Println("Database Connected.")
 	defer db.Close()
-        r := gin.Default()
-        r.POST("/register/email", register)
+
+	r := gin.Default()
+
+	r.POST("/register/email", register)
 	r.GET("/member", listMember)
 	r.Run()
 }
+//Post (insert to database)
 func register(c *gin.Context) {
 	sqlStr := "INSERT INTO member VALUES($1, $2, $3, $4)"
-
 	var member Member
 	err := c.BindJSON(&member)
 	if err != nil {
@@ -54,6 +56,7 @@ func register(c *gin.Context) {
 		fmt.Println(err)
 	}
 }
+//Get (Select database)
 func listMember(c *gin.Context) {
 	sqlStr := "SELECT username  FROM member"
 	rows, err := db.Query(sqlStr)

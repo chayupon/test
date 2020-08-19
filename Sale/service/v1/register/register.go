@@ -13,25 +13,25 @@ type Query struct{
 	db *sql.DB
 }
 // Member table
-type Member struct {
-	Email     string `json:"Email"`
+type member struct {
+	Email     string `json:"email"`
 	UserID    string `json:"user_id"`
 	UserName  string `json:"username"`
 	Address   string `json:"address"`
 	
 }
 //register
-func (input Query) register(c *gin.Context) {
+func (q Query) register(c *gin.Context) {
 	sqlStr := "INSERT INTO member VALUES($1, $2, $3, $4)"
-    var member Member
-	err := c.BindJSON(&member)
+    var m member
+	err := c.BindJSON(&m)
 	if err != nil {
 		fmt.Println(err)
 		c.String(http.StatusBadRequest, err.Error())
 		return 
 	}
-	fmt.Printf("%+v",member)
-	_, err = input.db.Exec(sqlStr, member.Email,member.UserID,member.UserName,member.Address)
+	//fmt.Printf("%+v",member)
+	_, err = q.db.Exec(sqlStr, m.Email,m.UserID,m.UserName,m.Address)
 	if err != nil {
 		fmt.Println(err)
 		c.String(http.StatusBadRequest, err.Error())
@@ -42,9 +42,9 @@ func (input Query) register(c *gin.Context) {
 	})
 }
 //Get (Select database)
-func (input Query) listMember(c *gin.Context) {
+func (q Query) listMember(c *gin.Context) {
 	sqlStr := `SELECT "UserName" FROM member`
-	rows, err := input.db.Query(sqlStr)
+	rows, err := q.db.Query(sqlStr)
 	if err != nil {
 		fmt.Println("FAIL")
 		c.String(http.StatusBadRequest, err.Error())
